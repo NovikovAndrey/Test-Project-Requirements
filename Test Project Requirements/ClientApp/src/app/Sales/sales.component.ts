@@ -18,9 +18,9 @@ export class SaleHighchartsComponent implements OnInit{
   ColumnLegend = 'Sum $/K';
   LineLegend = 'Sales';
   highcharts = Highcharts;
-  XArgs: string[];
-  Column: number[];
-  Line: number[];
+  XArgs: string[] = new Array<string>();
+  Column: number[] = new Array<number>();
+  Line: number[] = new Array<number>();
 
   constructor(private dataService: DataService) { }
 
@@ -28,13 +28,10 @@ export class SaleHighchartsComponent implements OnInit{
     this.loadSales();    // загрузка данных при старте компонента  
   }
 
-  loadSales() {
-    this.dataService.getProducts()
+  public loadSales() {
+    this.dataService.getSales()
       .subscribe((data: SaleModel[]) => {
         this.sales = data;
-        this.XArgs = new Array<string>();
-        this.Column = new Array<number>();
-        this.Line = new Array<number>();
         for (var i = 0, len = this.sales.length; i < len; i++) {
           this.XArgs[i] = this.sales[i].dateSale.toString();
           this.Column[i] = +(this.sales[i].amountDollars / 1000).toFixed(2);

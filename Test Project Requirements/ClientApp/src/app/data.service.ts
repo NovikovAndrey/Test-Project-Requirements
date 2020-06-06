@@ -5,27 +5,32 @@ import { HistorySaleModel } from './Models/HistorySaleModel';
 @Injectable()
 export class DataService {
 
-  private url = "/api/HistorySale";
+  private urlSales = "/api/HistorySale";
+  private urlNames = "api/DateGroupType";
 
   constructor(private http: HttpClient) {
   }
 
-  getProducts() {
-    return this.http.get(this.url);
+  getSales() {
+    return this.http.get(this.urlSales);
   }
 
-  getProduct(id: number) {
-    return this.http.get(this.url + '/' + id);
+  getNames() {
+  return this.http.get(this.urlNames);
   }
 
-  createProduct(product: HistorySaleModel) {
-    return this.http.post(this.url, product);
+  testSales() {
+    return this.http.get(this.urlSales);
   }
-  updateProduct(product: HistorySaleModel) {
 
-    return this.http.put(this.url, product);
-  }
-  deleteProduct(id: number) {
-    return this.http.delete(this.url + '/' + id);
-  }
+  //createProduct(product: HistorySaleModel) {
+  //  return this.http.post(this.url, product);
+  //}
+  //updateProduct(product: HistorySaleModel) {
+
+  //  return this.http.put(this.url, product);
+  //}
+  //deleteProduct(id: number) {
+  //  return this.http.delete(this.url + '/' + id);
+  //}
 }
