@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import * as Highcharts from 'highcharts';
 //import { HighchartsChartComponent } from 'highcharts-angular';
 @Component({
-  selector: 'app-root',
+  selector: 'app-Highcharts',
   templateUrl: './sales.component.html',
   //styleUrls: ['./app.component.css']
 })
