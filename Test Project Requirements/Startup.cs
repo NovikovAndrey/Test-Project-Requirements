@@ -59,7 +59,7 @@ namespace Test_Project_Requirements
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                    pattern: "api/{controller}/{action=Get}/{id?}");
             });
 
             app.UseSpa(spa =>
