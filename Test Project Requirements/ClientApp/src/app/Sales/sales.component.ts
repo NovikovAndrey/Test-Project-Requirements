@@ -1,13 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
-//import { HighchartsChartComponent } from 'highcharts-angular';
+import { DataService } from '../data.service';
+import { SaleModel } from '../Models/SaleModel';
+
 @Component({
   selector: 'app-Highcharts',
   templateUrl: './sales.component.html',
-  //styleUrls: ['./app.component.css']
+  providers: [DataService]
+
 })
-export class SaleHighchartsComponent {
+export class SaleHighchartsComponent implements OnInit{
+  sale: SaleModel = new SaleModel();   // изменяемый товар
+  sales: SaleModel[];                // массив товаров
+  tableMode: boolean = true;
+  title = 'app';
+  Y1 = 'Sum (In thousands)';
+  ColumnLegend = 'Sum $/K';
+  LineLegend = 'Sales';
   highcharts = Highcharts;
+  XArgs: string[];
+  Column: number[];
+  Line: number[];
+
+  constructor(private dataService: DataService) { }
+
+  ngOnInit() {
+    this.loadSales();    // загрузка данных при старте компонента  
+  }
+
+  loadSales() {
+    this.dataService.getProducts()
+      .subscribe((data: SaleModel[]) => this.sales = data);
+    this.XArgs = new Array<string>()
+    this.Column = new Array<number>();
+    this.Line = new Array<number>();
+    for (var i = 0, len = this.sales.length; i < len; i++) {
+      this.XArgs[i] = this.sales[i].dateSale.toString();
+      this.Column[i] = +(this.sales[i].amountDollars / 1000).toFixed(2);
+      this.Line[i] = this.sales[i].sale;
+    }
+  }
   chartOptions = {
     chart: {
       zoomType: 'xy'

@@ -1,7 +1,32 @@
 <body>
-  <p *ngIf="!historySales"><em>Loading...</em></p>
-  <highcharts-chart [Highcharts]="highcharts"
-                    [options]="chartOptions"
-                    style="width: 100%; height: 400px; display: block;">
-  </highcharts-chart>
+  <p>Id</p>
+  <p>DateSale</p>
+  <p>Sale</p>
+  <p>Price</p>
+  <p>AmountDollars</p>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="sales">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>DateSale</th>
+        <th>Sale</th>
+        <th>Price</th>
+        <th>AmountDollars</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of sales">
+        <td>{{ sale.id }}</td>
+        <td>{{ sale.dateSale }}</td>
+        <td>{{ sale.sale }}</td>
+        <td>{{ sale.price }}</td>
+        <td>{{ sale.amountDollars }}</td>
+      </tr>
+    </tbody>
+  </table>
+    <p *ngIf="!historySales"><em>Loading...</em></p>
+    <highcharts-chart [Highcharts]="highcharts"
+                      [options]="chartOptions"
+                      style="width: 100%; height: 400px; display: block;">
+    </highcharts-chart>
 </body>

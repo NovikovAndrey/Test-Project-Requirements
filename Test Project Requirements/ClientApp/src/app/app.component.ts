@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from './data.service';
-import { SaleModel } from './Models/SaleModel';
+//import { DataService } from './data.service';
+//import { SaleModel } from './Models/SaleModel';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  providers: [DataService]
+  //providers: [DataService]
 })
-export class AppComponent implements OnInit{
+export class AppComponent /*implements OnInit*/{
   title = 'app';
-  sale: SaleModel = new SaleModel();   // изменяемый товар
-  sales: SaleModel[];                // массив товаров
-  tableMode: boolean = true;    
-  constructor(private dataService: DataService) { }
+  //sale: SaleModel = new SaleModel();   // изменяемый товар
+  //sales: SaleModel[];                // массив товаров
+  //tableMode: boolean = true;    
+  //constructor(private dataService: DataService) { }
 
-  ngOnInit() {
-    this.loadSales();    // загрузка данных при старте компонента  
-  }
+  //ngOnInit() {
+  //  this.loadSales();    // загрузка данных при старте компонента  
+  //}
 
-  loadSales() {
-    this.dataService.getProducts()
-      .subscribe((data: SaleModel[]) => this.sales = data);
-  }
+  //loadSales() {
+  //  this.dataService.getProducts()
+  //    .subscribe((data: SaleModel[]) => this.sales = data);
+  //}
   //save() {
   //  if (this.sale.id == null) {
   //    this.dataService.createProduct(this.sale)
