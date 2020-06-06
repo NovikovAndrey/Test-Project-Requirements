@@ -94,15 +94,6 @@ export class SaleHighchartsComponent implements OnInit{
           }
         });
       });
-    //this.XArgs = new Array<string>()
-    //this.Column = new Array<number>();
-    //this.Line = new Array<number>();
-    //for (var i = 0, len = this.sales.length; i < len; i++) {
-    //  this.XArgs[i] = this.sales[i].dateSale.toString();
-    //  this.Column[i] = +(this.sales[i].amountDollars / 1000).toFixed(2);
-    //  this.Line[i] = this.sales[i].sale;
-    //}
-   
   }
   
 }
