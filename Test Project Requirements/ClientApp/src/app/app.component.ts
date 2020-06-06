@@ -23,44 +23,26 @@ export class AppComponent implements OnInit{
     this.dataService.getProducts()
       .subscribe((data: HistorySaleModel[]) => this.sales = data);
   }
+  save() {
+    if (this.sale.id == null) {
+      this.dataService.createProduct(this.sale)
+        .subscribe((data: HistorySaleModel) => this.sales.push(data));
+    } else {
+      this.dataService.updateProduct(this.sale)
+        .subscribe(data => this.loadSales());
+    }
+    this.cancel();
+  }
+  cancel() {
+    this.sale = new HistorySaleModel();
+    this.tableMode = true;
+  }
+  delete(p: HistorySaleModel) {
+    this.dataService.deleteProduct(p.id)
+      .subscribe(data => this.loadSales());
+  }
+  add() {
+    this.cancel();
+    this.tableMode = false;
+  }
 }
-//product: Product = new Product();   // изменяемый товар
-//products: Product[];                // массив товаров
-//tableMode: boolean = true;          // табличный режим
-
-
-
-//ngOnInit() {
-//  this.loadProducts();    // загрузка данных при старте компонента  
-//}
-//// получаем данные через сервис
-//loadProducts() {
-//  this.dataService.getProducts()
-//    .subscribe((data: Product[]) => this.products = data);
-//}
-//// сохранение данных
-//save() {
-//  if (this.product.id == null) {
-//    this.dataService.createProduct(this.product)
-//      .subscribe((data: Product) => this.products.push(data));
-//  } else {
-//    this.dataService.updateProduct(this.product)
-//      .subscribe(data => this.loadProducts());
-//  }
-//  this.cancel();
-//}
-//editProduct(p: Product) {
-//  this.product = p;
-//}
-//cancel() {
-//  this.product = new Product();
-//  this.tableMode = true;
-//}
-//delete (p: Product) {
-//  this.dataService.deleteProduct(p.id)
-//    .subscribe(data => this.loadProducts());
-//}
-//add() {
-//  this.cancel();
-//  this.tableMode = false;
-//}
