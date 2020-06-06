@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { HistorySaleModel } from './Models/HistorySaleModel';
+import { SaleModel } from './Models/SaleModel';
 
 
 @Component({
@@ -10,8 +10,8 @@ import { HistorySaleModel } from './Models/HistorySaleModel';
 })
 export class AppComponent implements OnInit{
   title = 'app';
-  sale: HistorySaleModel = new HistorySaleModel();   // изменяемый товар
-  sales: HistorySaleModel[];                // массив товаров
+  sale: SaleModel = new SaleModel();   // изменяемый товар
+  sales: SaleModel[];                // массив товаров
   tableMode: boolean = true;    
   constructor(private dataService: DataService) { }
 
@@ -21,28 +21,28 @@ export class AppComponent implements OnInit{
 
   loadSales() {
     this.dataService.getProducts()
-      .subscribe((data: HistorySaleModel[]) => this.sales = data);
+      .subscribe((data: SaleModel[]) => this.sales = data);
   }
-  save() {
-    if (this.sale.id == null) {
-      this.dataService.createProduct(this.sale)
-        .subscribe((data: HistorySaleModel) => this.sales.push(data));
-    } else {
-      this.dataService.updateProduct(this.sale)
-        .subscribe(data => this.loadSales());
-    }
-    this.cancel();
-  }
-  cancel() {
-    this.sale = new HistorySaleModel();
-    this.tableMode = true;
-  }
-  delete(p: HistorySaleModel) {
-    this.dataService.deleteProduct(p.id)
-      .subscribe(data => this.loadSales());
-  }
-  add() {
-    this.cancel();
-    this.tableMode = false;
-  }
+  //save() {
+  //  if (this.sale.id == null) {
+  //    this.dataService.createProduct(this.sale)
+  //      .subscribe((data: SaleModel) => this.sales.push(data));
+  //  } else {
+  //    this.dataService.updateProduct(this.sale)
+  //      .subscribe(data => this.loadSales());
+  //  }
+  //  this.cancel();
+  //}
+  //cancel() {
+  //  this.sale = new SaleModel();
+  //  this.tableMode = true;
+  //}
+  //delete(p: SaleModel) {
+  //  this.dataService.deleteProduct(p.id)
+  //    .subscribe(data => this.loadSales());
+  //}
+  //add() {
+  //  this.cancel();
+  //  this.tableMode = false;
+  //}
 }
