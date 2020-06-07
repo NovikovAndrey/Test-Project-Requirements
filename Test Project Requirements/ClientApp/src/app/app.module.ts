@@ -9,6 +9,7 @@ import { SaleHighchartsComponent } from './Sales/sales.component';
 import { HighchartsChartComponent } from 'highcharts-angular';
 import { NgbdDropdown } from './DropBox/dropdown.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   exports: [
     NgbdDropdown
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent, NgbdDropdown]
 })
 export class AppModule { }
