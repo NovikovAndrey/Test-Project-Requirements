@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { DataService } from '../data.service';
 import { SaleModel } from '../Models/SaleModel';
+import { NgbdDropdown } from '../DropBox/dropdown.component';
 
 @Component({
   selector: 'app-Highcharts',
-  templateUrl: './sales.component.html',
+  templateUrl: `./sales.component.html`,
+
   providers: [DataService]
 })
 
@@ -21,11 +23,12 @@ export class SaleHighchartsComponent implements OnInit{
   XArgs: string[] = new Array<string>();
   Column: number[] = new Array<number>();
   Line: number[] = new Array<number>();
+  //test: NgbdDropdown = new NgbdDropdown(this.dataService) ;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.loadSales();    // загрузка данных при старте компонента  
+    this.loadSales();    // загрузка данных при старте компонента
   }
 
   public loadSales() {
@@ -92,7 +95,7 @@ export class SaleHighchartsComponent implements OnInit{
         });
       });
   }
-
+  
   onChanged(increased: any) {
     increased == true ? this.loadSales() : false;
   }
