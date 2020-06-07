@@ -10,6 +10,7 @@ import { HighchartsChartComponent } from 'highcharts-angular';
 import { NgbdDropdown } from './DropBox/dropdown.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from './data.service';
+import { NgbdDatepickerAdapter } from './DatePickers/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DataService } from './data.service';
     HomeComponent,
     HighchartsChartComponent,
     SaleHighchartsComponent,
+    NgbdDatepickerAdapter,
     NgbdDropdown
   ],
   imports: [
@@ -29,9 +31,10 @@ import { DataService } from './data.service';
     ])
   ],
   exports: [
-    NgbdDropdown
+    NgbdDropdown,
+    NgbdDatepickerAdapter
   ],
   providers: [DataService],
-  bootstrap: [AppComponent, NgbdDropdown]
+  bootstrap: [AppComponent, NgbdDropdown, NgbdDatepickerAdapter]
 })
 export class AppModule { }
