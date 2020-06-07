@@ -7,12 +7,16 @@ export class DataService {
 
   private urlSales = "/api/HistorySale";
   private urlNames = "api/DateGroupType";
+  s: string = 'Day';
 
   constructor(private http: HttpClient) {
   }
 
-  getSales() {
-    return this.http.get(this.urlSales);
+  getSales(s: string) {
+    return this.http.get(this.urlSales + '/'+s);
+  }
+  getSales1(s: string) {
+    return this.http.get(this.urlSales +'/group='+ s);
   }
 
   getNames() {

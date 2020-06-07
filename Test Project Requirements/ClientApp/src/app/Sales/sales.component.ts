@@ -23,7 +23,7 @@ export class SaleHighchartsComponent implements OnInit{
   XArgs: string[] = new Array<string>();
   Column: number[] = new Array<number>();
   Line: number[] = new Array<number>();
-  //test: NgbdDropdown = new NgbdDropdown(this.dataService) ;
+  //test: NgbdDropdown;
 
   constructor(private dataService: DataService) { }
 
@@ -32,7 +32,7 @@ export class SaleHighchartsComponent implements OnInit{
   }
 
   public loadSales() {
-    this.dataService.getSales()
+    this.dataService.getSales('Day')
       .subscribe((data: SaleModel[]) => {
         this.sales = data;
         for (var i = 0, len = this.sales.length; i < len; i++) {
