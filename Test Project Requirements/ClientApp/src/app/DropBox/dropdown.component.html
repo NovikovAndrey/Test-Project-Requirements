@@ -8,7 +8,7 @@
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdown" #selectedValue>
           <div *ngFor="let name of names;">
-            <button ngbDropdownItem id="option" on-click="selectedValue.value=name" (click)="GetGroup()">
+            <button ngbDropdownItem id="option" on-click="selectedValue.value=name" (click)="GetGroup(selectedValue.value)">
               {{name}}
             </button>
           </div>

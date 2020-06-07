@@ -7,8 +7,8 @@ import { SaleModel } from '../Models/SaleModel';
   selector: 'app-Highcharts',
   templateUrl: './sales.component.html',
   providers: [DataService]
-
 })
+
 export class SaleHighchartsComponent implements OnInit{
   sale: SaleModel = new SaleModel();   // изменяемый товар
   sales: SaleModel[];                // массив товаров
@@ -92,5 +92,8 @@ export class SaleHighchartsComponent implements OnInit{
         });
       });
   }
-  
+
+  onChanged(increased: any) {
+    increased == true ? this.loadSales() : false;
+  }
 }

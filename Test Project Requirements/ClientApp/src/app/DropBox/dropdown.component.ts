@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { DataService } from '../data.service';
 import { SaleHighchartsComponent } from '../Sales/sales.component';
 
@@ -10,6 +10,7 @@ import { SaleHighchartsComponent } from '../Sales/sales.component';
 export class NgbdDropdown implements OnInit{
   names: string[];
   comp: SaleHighchartsComponent;
+  @Output() onChanged = new EventEmitter<boolean>();
 
   constructor(private dataService: DataService) { }
 
@@ -25,7 +26,7 @@ export class NgbdDropdown implements OnInit{
       )
   };
 
-  GetGroup() {
-    this.dataService.testSales() /*{this.dataService.getSales()}*/
+  GetGroup(increased: any) {
+    this.onChanged.emit(increased); /*{this.dataService.getSales()}*/
   };
 }
