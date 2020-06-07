@@ -1,10 +1,10 @@
 <body>
   <div class="row">
     <div class="col">
-      <div ngbDropdown class="d-inline-block">
+      <div ngbDropdown class="d-inline-block">Time period
         <button class="btn btn-outline-primary" id="dropdown"
                 ngbDropdownToggle>
-          {{ selectedValue.value || "Select Environment" }}
+          {{ selectedValue.value || "Day" }}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdown" #selectedValue>
           <div *ngFor="let name of names;">
@@ -16,19 +16,4 @@
       </div>
     </div>
   </div>
-  <p>Количество кликов {{count}}</p>
 </body>
-
-<!--<div ngbDropdown class="d-inline-block">
-  <button class="btn btn-outline-primary" id="dropdown"
-          ngbDropdownToggle>
-    {{ selectedValue.value || "Select Environment" }}
-  </button>
-  <div ngbDropdownMenu aria-labelledby="dropdown" #selectedValue>
-    <div *ngFor="let env of environments;">
-      <button ngbDropdownItem id="option" on-click="selectedValue.value=env">
-        {{env}}
-      </button>
-    </div>
-  </div>
-</div>-->

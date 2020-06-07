@@ -1,23 +1,4 @@
 <body>
-  <!--<p>dsfsdfsdfs</p>-->
-  <!--<div class="row">
-    <div class="col">
-      <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-outline-primary" id="dropdown"
-                ngbDropdownToggle>
-          {{ selectedValue.value || "Select Environment" }}
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdown" #selectedValue>
-          <div *ngFor="let name of names;">
-            <button ngbDropdownItem id="option" on-click="selectedValue.value=name" (click)="GetGroup(selectedValue.value)">
-              {{name}}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>-->
-  <ngbd-dropdown (onChanged)="onChanged($event)"></ngbd-dropdown>
-  <p *ngIf="!sales"><em>Loading...</em></p>
+  <ngbd-dropdown></ngbd-dropdown>
   <div id="SalesChart" width=95%> </div>
 </body>
