@@ -33,11 +33,18 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
 
 export class NgbdDatepickerAdapter {
   model2: string;
-  s: any
+  model1: string;
+  //DPFirst: NgbDateStruct;
+  //DPSecond: NgbDateStruct;
   constructor() {
    
   }
-  dateSelect1(t: any) {
-    this.s = t;
+  dateSelectDPFirst() {
+    //this.DPFirst = this.model1;
+    //ValidPeriod(this.DPFirst, this.DPSecond);
+  }
+  dateSelectDPSecond() {
+    //this.DPSecond = t;
+    this.model1 = this.model2;
   }
 }

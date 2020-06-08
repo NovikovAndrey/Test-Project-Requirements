@@ -5,7 +5,7 @@
         <div class="form-group">
           <div class="input-group">
             <input class="form-control" placeholder="mm/dd/yyyy" datese
-                   name="d1" #c1="ngModel" [(ngModel)]="model1" (dateSelect)="dateSelect1(model1)" ngbDatepicker #d1="ngbDatepicker" max="model2">
+                   name="d1" #c1="ngModel" [(ngModel)]="model1" (dateSelect)="dateSelectDPFirst()" ngbDatepicker #d1="ngbDatepicker" max="model2">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
             </div>
@@ -20,7 +20,7 @@
         <div class="form-group">
           <div class="input-group">
             <input class="form-control" placeholder="mm/dd/yyyy" 
-                   name="d2" #c2="ngModel" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
+                   name="d2" #c2="ngModel" [(ngModel)]="model2" (dateSelect)="dateSelectDPSecond()" ngbDatepicker #d2="ngbDatepicker">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
             </div>

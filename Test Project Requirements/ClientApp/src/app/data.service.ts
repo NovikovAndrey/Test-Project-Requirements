@@ -9,7 +9,7 @@ export class DataService {
 
   private urlSales = "/api/HistorySale";
   private urlNames = "api/DateGroupType";
-  s: string = 'Day';
+  TimePeriod: string = 'Day';
     sales: SaleModel[];
   title = 'app';
   Y1 = 'Sum (In thousands)';
@@ -22,11 +22,11 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
-  getSales(s: string) {
+  getSales() {
     this.XArgs = new Array<string>();
     this.Column = new Array<number>();
     this.Line = new Array<number>();
-    return this.http.get(this.urlSales + '/' + s).subscribe((data: SaleModel[]) => {
+    return this.http.get(this.urlSales + '/' + this.TimePeriod).subscribe((data: SaleModel[]) => {
       this.sales = data;
       for (var i = 0, len = this.sales.length; i < len; i++) {
         this.XArgs[i] = this.sales[i].dateSale.toString();
@@ -88,16 +88,13 @@ export class DataService {
       });
     });;
   }
-  getSales1(s: string) {
-    return this.http.get(this.urlSales +'/group='+ s);
-  }
 
   getNames() {
-  return this.http.get(this.urlNames);
+    return this.http.get(this.urlNames);
   }
-
-  testSales() {
-    return this.http.get(this.urlSales);
+  setTimePeriod(s: string) {
+    this.TimePeriod = s;
+    this.getSales();
   }
 
   //createProduct(product: HistorySaleModel) {

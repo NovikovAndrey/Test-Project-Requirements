@@ -19,7 +19,7 @@ export class SaleHighchartsComponent implements OnInit{
   }
 
   public loadSales() {
-    this.dataService.getSales('Day');
+    this.dataService.getSales();
      
   }
 }
