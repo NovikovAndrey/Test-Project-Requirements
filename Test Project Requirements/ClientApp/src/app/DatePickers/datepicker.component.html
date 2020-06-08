@@ -4,7 +4,22 @@
       <form class="form-inline">
         <div class="form-group">
           <div class="input-group">
-            <input class="form-control" placeholder="mm/dd/yyyy"
+            <input class="form-control" placeholder="mm/dd/yyyy" datese
+                   name="d1" #c1="ngModel" [(ngModel)]="model1" (dateSelect)="dateSelect1(model1)" ngbDatepicker #d1="ngbDatepicker" max="model2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="mm/dd/yyyy" 
                    name="d2" #c2="ngModel" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>

@@ -3,7 +3,7 @@ import { NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } fr
 
 @Injectable()
 export class CustomDateParserFormatter extends NgbDateParserFormatter {
-
+  
   readonly DELIMITER = '/';
 
   parse(value: string): NgbDateStruct | null {
@@ -33,5 +33,11 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
 
 export class NgbdDatepickerAdapter {
   model2: string;
-  constructor(private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>) { }
+  s: any
+  constructor() {
+   
+  }
+  dateSelect1(t: any) {
+    this.s = t;
+  }
 }
