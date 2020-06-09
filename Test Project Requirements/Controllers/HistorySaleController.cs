@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -16,20 +17,27 @@ namespace Test_Project_Requirements.Controllers
     public class HistorySaleController : ControllerBase
     {
         ApplicationContext db;
+        private DateTime StartDateTime;
+        private DateTime EndDateTime;
+
         public HistorySaleController(ApplicationContext applicationContext)
         {
             db = applicationContext;
         }
         // GET: api/<HistorySaleController>
-        [HttpGet("{group}")]
+        [HttpGet("group={group}&StartDT={StartDT}")]
         public IEnumerable<Sales> Get(
-            DateTime? StartDateTime = null,
-            DateTime? EndDateTime = null,
-            DateGroupType group = DateGroupType.Quarter)
+            string StartDT = null,
+            string EndDT = null,
+            DateGroupType group = DateGroupType.Day)
         {
             IEnumerable<Sales> Group;
-            if (StartDateTime == null) StartDateTime = DateTime.MinValue;
-            if (EndDateTime == null) EndDateTime = DateTime.MaxValue;
+            if (StartDT == null) { StartDateTime = DateTime.MinValue; }
+            else { DateTime.TryParseExact(StartDT, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out StartDateTime); }
+
+            if (EndDT == null) { EndDateTime = DateTime.MaxValue; }
+            else { DateTime.TryParseExact(EndDT, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out EndDateTime); }
+
             switch (group)
             {
                 case DateGroupType.Week:

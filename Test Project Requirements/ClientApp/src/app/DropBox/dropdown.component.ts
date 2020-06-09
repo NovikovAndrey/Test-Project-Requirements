@@ -5,7 +5,6 @@ import { SaleHighchartsComponent } from '../Sales/sales.component';
 @Component({
   selector: 'ngbd-dropdown',
   templateUrl: './dropdown.component.html',
-  providers: [DataService]
 })
 export class NgbdDropdown implements OnInit{
   names: string[];

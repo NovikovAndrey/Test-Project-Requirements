@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { HistorySaleModel } from './Models/HistorySaleModel';
 import { SaleModel } from './Models/SaleModel';
 import * as Highcharts from 'highcharts';
+import { strict } from 'assert';
 
 @Injectable()
 export class DataService {
 
   private urlSales = "/api/HistorySale";
   private urlNames = "api/DateGroupType";
-  TimePeriod: string = 'Day';
+  TimePeriod = 'Day';
     sales: SaleModel[];
   title = 'app';
   Y1 = 'Sum (In thousands)';
@@ -18,6 +19,9 @@ export class DataService {
   XArgs: string[];
   Column: number[];
   Line: number[];
+  DT1 = '1900-01-01';
+  DT2 = '9999-12-31';
+  
 
   constructor(private http: HttpClient) {
   }
@@ -26,7 +30,7 @@ export class DataService {
     this.XArgs = new Array<string>();
     this.Column = new Array<number>();
     this.Line = new Array<number>();
-    return this.http.get(this.urlSales + '/' + this.TimePeriod).subscribe((data: SaleModel[]) => {
+    return this.http.get(this.urlSales + '/group=' + this.TimePeriod + '&StartDT=' + this.DT1).subscribe((data: SaleModel[]) => {
       this.sales = data;
       for (var i = 0, len = this.sales.length; i < len; i++) {
         this.XArgs[i] = this.sales[i].dateSale.toString();
@@ -94,6 +98,13 @@ export class DataService {
   }
   setTimePeriod(s: string) {
     this.TimePeriod = s;
+    this.getSales();
+  }
+  setTimePeriod1(DT1: string, DT2: string) {
+    //this.TimePeriod = s;
+    //this.getSales();
+    this.DT1 = DT1;
+    this.DT2 = DT2;
     this.getSales();
   }
 
