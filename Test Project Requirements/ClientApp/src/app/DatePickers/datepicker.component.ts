@@ -70,37 +70,26 @@ export class NgbdDatepickerAdapter {
 
   ValidPeriod() {
     if (this.DPFirst != null && this.DPSecond!=null) {
-      if (this.DPFirst.year < this.DPSecond.year) {
+      if (this.DPFirst.year <= this.DPSecond.year && this.DPFirst.month <= this.DPSecond.month && this.DPFirst.day <= this.DPSecond.day) {
         this.dataService.setTimePeriod1(this.format(this.DPFirst), this.format(this.DPSecond));
       }
       else {
-        if ((this.DPFirst.month < this.DPSecond.month) && (this.DPFirst.year == this.DPSecond.year)) {
-          this.dataService.setTimePeriod1(this.format(this.DPFirst), this.format(this.DPSecond));
-        }
-        else {
-          if ((this.DPFirst.day < this.DPSecond.day) && (this.DPFirst.year == this.DPSecond.year) && (this.DPFirst.month == this.DPSecond.month)) {
-            this.dataService.setTimePeriod1(this.format(this.DPFirst), this.format(this.DPSecond));
-          }
-          else {
-            if ((this.DPFirst.day == this.DPSecond.day) && (this.DPFirst.year == this.DPSecond.year) && (this.DPFirst.month == this.DPSecond.month)) {
-              this.dataService.setTimePeriod1(this.format(this.DPFirst), this.format(this.DPSecond));
-              //this.DPFirst.day -= 1;
-              //this.model1 = this.format(this.DPFirst);
-              //this.ValidPeriod();
-            }
-            else {
-              //var temp = this.DPFirst;
-              //this.DPFirst = this.DPSecond;
-              //this.DPSecond = temp;
-              //var t = this.model1;
-              //this.model1 = this.model2;
-              //this.model2 = t;
-              ////this.model1 = this.format(this.DPFirst);
-              ////this.model2 = this.format(this.DPSecond);
-              //this.ValidPeriod();
-            }
-          }
-        }
+        //if ((this.DPFirst.month < this.DPSecond.month) && (this.DPFirst.year == this.DPSecond.year)) {
+        //  this.dataService.setTimePeriod1(this.format(this.DPFirst), this.format(this.DPSecond));
+        //}
+        //else {
+        //  if ((this.DPFirst.day < this.DPSecond.day) && (this.DPFirst.year == this.DPSecond.year) && (this.DPFirst.month == this.DPSecond.month)) {
+        //    this.dataService.setTimePeriod1(this.format(this.DPFirst), this.format(this.DPSecond));
+        //  }
+        //  else {
+        //    if ((this.DPFirst.day == this.DPSecond.day) && (this.DPFirst.year == this.DPSecond.year) && (this.DPFirst.month == this.DPSecond.month)) {
+        //      this.dataService.setTimePeriod1(this.format(this.DPFirst), this.format(this.DPSecond));
+        //    }
+        //    else {
+
+        //    }
+        //  }
+        //}
       }
 
     }
