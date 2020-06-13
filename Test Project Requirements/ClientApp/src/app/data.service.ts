@@ -10,7 +10,7 @@ export class DataService {
 
   private urlSales = "/api/HistorySale";
   private urlNames = "api/DateGroupType";
-  TimePeriod = 'Day';
+  GroupPeriod = 'Day';
     sales: SaleModel[];
   title = 'app';
   Y1 = 'Sum (In thousands)';
@@ -30,7 +30,7 @@ export class DataService {
     this.XArgs = new Array<string>();
     this.Column = new Array<number>();
     this.Line = new Array<number>();
-    return this.http.get(this.urlSales + '/group=' + this.TimePeriod + '&StartDT=' + this.DT1).subscribe((data: SaleModel[]) => {
+    return this.http.get(this.urlSales + '/group=' + this.GroupPeriod + '&StartDT=' + this.DT1 + '&EndDT=' + this.DT2).subscribe((data: SaleModel[]) => {
       this.sales = data;
       for (var i = 0, len = this.sales.length; i < len; i++) {
         this.XArgs[i] = this.sales[i].dateSale.toString();
@@ -96,26 +96,21 @@ export class DataService {
   getNames() {
     return this.http.get(this.urlNames);
   }
-  setTimePeriod(s: string) {
-    this.TimePeriod = s;
+  setGroupPeriod(Group: string) {
+    this.GroupPeriod = Group;
     this.getSales();
   }
-  setTimePeriod1(DT1: string, DT2: string) {
-    //this.TimePeriod = s;
-    //this.getSales();
+  setTimePeriodAll(DT1: string, DT2: string) {
     this.DT1 = DT1;
     this.DT2 = DT2;
     this.getSales();
   }
-
-  //createProduct(product: HistorySaleModel) {
-  //  return this.http.post(this.url, product);
-  //}
-  //updateProduct(product: HistorySaleModel) {
-
-  //  return this.http.put(this.url, product);
-  //}
-  //deleteProduct(id: number) {
-  //  return this.http.delete(this.url + '/' + id);
-  //}
+  setTimePeriodStart(DT1: string) {
+    this.DT1 = DT1;
+    this.getSales();
+  }
+  setTimePeriodEnd(DT2: string) {
+    this.DT2 = DT2;
+    this.getSales();
+  }
 }

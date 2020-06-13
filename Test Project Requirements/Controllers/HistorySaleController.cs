@@ -25,7 +25,7 @@ namespace Test_Project_Requirements.Controllers
             db = applicationContext;
         }
         // GET: api/<HistorySaleController>
-        [HttpGet("group={group}&StartDT={StartDT}")]
+        [HttpGet("group={group}&StartDT={StartDT}&EndDT={EndDT}")]
         public IEnumerable<Sales> Get(
             string StartDT = null,
             string EndDT = null,

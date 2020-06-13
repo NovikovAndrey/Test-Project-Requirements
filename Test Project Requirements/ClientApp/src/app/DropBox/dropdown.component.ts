@@ -26,6 +26,6 @@ export class NgbdDropdown implements OnInit{
   };
 
   public GetGroup(increased: string) {
-    this.dataService.setTimePeriod(increased)
+    this.dataService.setGroupPeriod(increased)
   };
 }
